@@ -1,0 +1,92 @@
+<div class="personal-space-container">
+  <nz-row [nzGutter]="24">
+
+    <nz-col [nzSpan]="8">
+      <nz-card class="profile-card" [nzBordered]="false">
+        <div class="profile-header">
+          <nz-avatar [nzSize]="64" nzText="欣" nzSrc="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXhN.png"></nz-avatar>
+          <div class="info-text">
+            <h2>{{ userInfo.name }} ({{ userInfo.studentId }})</h2>
+            <p class="signature">{{ userInfo.signature }}</p>
+          </div>
+        </div>
+
+        <nz-divider></nz-divider>
+
+        <div class="details">
+          <p><nz-icon nzType="safety-certificate" nzTheme="outline"></nz-icon> 角色：{{ userInfo.role }}</p>
+          <p><nz-icon nzType="book" nzTheme="outline"></nz-icon> 专业：{{ userInfo.major }}</p>
+          <p><nz-icon nzType="mail" nzTheme="outline"></nz-icon> 邮箱：{{ userInfo.studentId }}@school.edu</p>
+        </div>
+
+        <nz-divider></nz-divider>
+
+        <div class="quick-actions">
+          <button nz-button nzType="primary" (click)="goToSettings()">
+            <nz-icon nzType="setting"></nz-icon> 个人设置
+          </button>
+          <button nz-button nzType="default">
+            <nz-icon nzType="edit"></nz-icon> 修改密码
+          </button>
+        </div>
+      </nz-card>
+    </nz-col>
+
+    <nz-col [nzSpan]="16">
+
+      <nz-card nzTitle="最近活动" class="activity-card" [nzBordered]="false">
+        <nz-list [nzDataSource]="recentActivities" [nzRenderItem]="item" [nzItemLayout]="'horizontal'">
+          <ng-template #item let-item>
+            <nz-list-item>
+              <nz-list-item-meta
+                [nzAvatar]="activityIcon"
+                [nzTitle]="activityTitle"
+                [nzDescription]="item.time">
+                <ng-template #activityIcon>
+                  <nz-avatar [nzIcon]="item.icon" nzShape="square" style="background-color:#40a9ff;"></nz-avatar>
+                </ng-template>
+                <ng-template #activityTitle>
+                  <a href="#">{{ item.title }}</a>
+                </ng-template>
+              </nz-list-item-meta>
+            </nz-list-item>
+          </ng-template>
+        </nz-list>
+        <button nz-button nzType="link" (click)="viewMoreActivities()" class="more-activities">
+          查看更多
+          <nz-icon nzType="arrow-right"></nz-icon>
+        </button>
+      </nz-card>
+
+      <nz-card nzTitle="快捷功能" class="feature-card" [nzBordered]="false">
+        <nz-row [nzGutter]="16">
+          <nz-col [nzSpan]="6">
+            <div class="feature-item">
+              <nz-icon nzType="file-text" nzTheme="fill"></nz-icon>
+              <p>我的报告</p>
+            </div>
+          </nz-col>
+          <nz-col [nzSpan]="6">
+            <div class="feature-item">
+              <nz-icon nzType="team" nzTheme="fill"></nz-icon>
+              <p>我的班级</p>
+            </div>
+          </nz-col>
+          <nz-col [nzSpan]="6">
+            <div class="feature-item">
+              <nz-icon nzType="message" nzTheme="fill"></nz-icon>
+              <p>我的消息</p>
+            </div>
+          </nz-col>
+          <nz-col [nzSpan]="6">
+            <div class="feature-item">
+              <nz-icon nzType="form" nzTheme="fill"></nz-icon>
+              <p>在线考试</p>
+            </div>
+          </nz-col>
+        </nz-row>
+      </nz-card>
+
+    </nz-col>
+  </nz-row>
+</div>

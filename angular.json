@@ -25,6 +25,7 @@
               }
             ],
             "styles": [
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.css"
             ]
           },
@@ -82,11 +83,15 @@
               }
             ],
             "styles": [
+              "./node_modules/ng-zorro-antd/ng-zorro-antd.min.css",
               "src/styles.css"
             ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "ecee504e-d6bb-47e1-8c94-b0fbfa126dc0"
   }
 }

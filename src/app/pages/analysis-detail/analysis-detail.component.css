@@ -1,0 +1,97 @@
+/* src/app/pages/analysis-detail/analysis-detail.component.css */
+
+.detail-container {
+    padding: 30px 50px;
+    background-color: #f0f2f5;
+    min-height: calc(100vh - 64px); /* 占据剩余视口高度 */
+}
+
+.title {
+    font-size: 2em;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #001529;
+    text-align: center;
+}
+
+.summary-card, .sentence-card {
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.summary-content {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.total-score {
+    width: 250px;
+    text-align: center;
+    padding: 0 30px;
+}
+
+.score-text {
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.original-text {
+    flex-grow: 1;
+    padding: 0 40px;
+}
+
+.original-text h3 {
+    margin-bottom: 10px;
+    color: #595959;
+}
+
+.original-text p {
+    background-color: #fafafa;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #e8e8e8;
+    max-height: 250px;
+    overflow-y: auto;
+    line-height: 1.8;
+}
+
+.sentence-list {
+    list-style: none;
+    padding: 0;
+}
+
+.sentence-list li {
+    padding: 10px 0;
+    border-bottom: 1px dashed #f0f0f0;
+    display: flex;
+    align-items: flex-start;
+}
+
+.tag-marker {
+    margin-right: 15px;
+    flex-shrink: 0;
+    font-size: 14px;
+    height: auto;
+    line-height: 1.6;
+    padding: 4px 8px;
+}
+
+.sentence-text {
+    line-height: 1.6;
+    word-break: break-word; /* 防止长单词溢出 */
+}
+
+.error-prompt {
+    text-align: center;
+    padding: 50px;
+    color: #8c8c8c;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}

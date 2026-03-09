@@ -1,0 +1,32 @@
+<div class="analysis-container">
+
+    <h2 class="title">AI 文本查重与分析</h2>
+    <div class="main-content-wrapper">
+
+        <div class="input-action-wrapper">
+            <div class="input-area centered-input">
+                <textarea
+                    nz-input
+                    placeholder="请输入文本..."
+                    [(ngModel)]="essayInput"
+                    [nzAutosize]="{ minRows: 15, maxRows: 30 }"
+                    class="custom-textarea"
+                ></textarea>
+            </div>
+
+            <div class="action-area">
+                <button
+                    nz-button
+                    nzType="primary"
+                    class="submit-btn"
+                    [nzLoading]="isLoading"
+                    [disabled]="isLoading || essayInput.length < 10"
+                    (click)="submitCheck()"
+                >
+                    <span *ngIf="!isLoading">提交 AI 查重与分析</span>
+                    <span *ngIf="isLoading">正在分析中...</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
