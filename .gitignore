@@ -205,3 +205,44 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# 依赖包（太大，不要上传）
+node_modules/
+
+# Angular 缓存和临时文件（从截图可见）
+.angular/
+angular-compiler.db
+angular-compiler.db-lock
+
+# 构建输出（运行 ng build 或 vite build 时生成）
+dist/
+build/
+
+# IDE/编辑器特定（从截图有 .vscode，如果不是团队共享）
+.vscode/
+*.code-workspace
+
+# 日志和调试文件
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+*.log
+
+# 环境变量文件（敏感信息，不要上传）
+.env
+.env.local
+.env.*.local
+
+# 测试覆盖率报告
+coverage/
+
+# 其他常见忽略
+.DS_Store  # Mac 系统文件
+Thumbs.db  # Windows 系统文件
+*.swp      # Vim 临时文件
+*.bak
+*.tmp
+
+# 如果有 e2e 测试输出
+e2e/*.js
+e2e/*.map

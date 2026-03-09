@@ -1,0 +1,28 @@
+<div class="login-container">
+  <div class="login-form">
+    <h2 class="form-title">登录系统</h2>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5">学 号</nz-form-label>
+      <nz-form-control [nzSpan]="18">
+        <input nz-input [(ngModel)]="studentId" placeholder="请输入你的学号" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="5">密 码</nz-form-label>
+      <nz-form-control [nzSpan]="18">
+        <input nz-input type="password" [(ngModel)]="password" placeholder="请输入你的密码" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-control [nzSpan]="24">
+        <div class="login-btn-wrapper">
+          <button nz-button nzType="primary" (click)="login()">登 录</button>
+          <button nz-button nzType="default" (click)="anonymousLogin()" style="margin-left: 10px;">匿名登录</button>
+        </div>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<nz-layout class="full-height-layout">
+  <nz-sider
+    nzCollapsible
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+    class="full-height-sider">
+
+    <div
+      class="avatar-container click-effect"
+      [routerLink]="['/personalspace']"
+      >
+      <nz-avatar nzIcon="user" class="centered-avatar" style="background-color:#87d068;"></nz-avatar>
+    </div>
+
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nz-menu-item routerLink="/home">文本检测</li>
+      <li nz-menu-item routerLink="/profile">结果查询</li>
+      <li nz-menu-item (click)="logout()">退出登录</li>
+    </ul>
+  </nz-sider>
+
+  <nz-layout class="main-content-layout">
+    <nz-header>
+      <nz-icon
+        class="trigger"
+        [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+        (click)="isCollapsed = !isCollapsed"
+      />
+      <span class="header-title">UserName,欢迎使用</span>
+    </nz-header>
+
+    <nz-content class="scrollable-content">
+      <router-outlet></router-outlet>
+    </nz-content>
+
+    <nz-footer>AI 文本检测系统 @{{ date.getFullYear() }}</nz-footer>
+  </nz-layout>
+</nz-layout>

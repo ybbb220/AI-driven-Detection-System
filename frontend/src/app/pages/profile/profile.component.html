@@ -1,0 +1,28 @@
+<nz-table #basicTable [nzData]="data" nzBordered>
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>文本</th>
+      <th>操作</th>
+      <th>检测结果</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of data; track item.text; let i = $index) {
+      <tr>
+        <td>{{ i + 1 }}</td>
+        <td>
+          {{ item.text | slice:0:20 }}{{ item.text.length > 20 ? '...' : '' }}
+        </td>
+        <td>
+          <button nz-button nzType="default">查看文本</button>
+        </td>
+        <td>
+          <span [ngStyle]="{'color': item.result ? 'green' : 'red'}">
+            {{ item.result ? '是' : '否' }}
+          </span>
+        </td>
+      </tr>
+    }
+  </tbody>
+</nz-table>

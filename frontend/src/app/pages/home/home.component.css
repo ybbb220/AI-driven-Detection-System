@@ -1,0 +1,100 @@
+/* src/app/pages/home/home.component.css */
+
+/* -------------------- 整体布局：使用 Flex 占据整个视口 -------------------- */
+.analysis-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    min-height: calc(100vh - 64px);
+    background-color: #f0f2f5;
+}
+
+.alert-message {
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 2.2em;
+    font-weight: 600;
+    color: #001529;
+    margin-bottom: 25px;
+}
+
+/* 主内容区：限制宽度并垂直分配空间 */
+.main-content-wrapper {
+    width: 100%;
+    max-width: 1200px; /* 限制内容最大宽度 */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* 占据剩余垂直空间 */
+}
+
+/* 结果显示区域：占据上部所有剩余空间 */
+.result-display-area {
+    flex-grow: 1;
+    width: 100%;
+    min-height: 200px;
+    margin-bottom: 30px;
+    /* 确保结果区内容可以滚动 */
+    overflow-y: auto;
+}
+
+.initial-prompt {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #8c8c8c;
+    font-size: 1.2em;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+
+/* -------------------- 输入和操作区域：保持在底部，并居中输入框 -------------------- */
+.input-action-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    padding-top: 20px;
+    background-color: #f0f2f5;
+    border-top: 1px solid #e8e8e8;
+    box-sizing: border-box;
+    flex-grow: 0; /* 阻止它占据额外垂直空间 */
+}
+
+.input-area {
+    width: 100%;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Ant Design TextArea 样式覆盖 */
+.custom-textarea {
+    width: 100%;
+    font-size: 18px;
+    line-height: 1.8;
+    padding: 20px 24px;
+    border: none !important;
+    box-sizing: border-box;
+}
+
+.action-area {
+    display: flex;
+    justify-content: flex-end; /* 按钮靠右 */
+    padding-bottom: 20px;
+}
+
+.submit-btn {
+    width: 200px;
+    height: 40px;
+    font-size: 16px;
+}
+/* ... 结果展示区的 CSS 保持不变 ... */
