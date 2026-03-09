@@ -1,0 +1,91 @@
+/* src/app/pages/personalspace/personalspace.component.css */
+
+.personal-space-container {
+  padding: 24px;
+  background-color: #f0f2f5; /* 略微灰色背景，突出卡片 */
+  min-height: 100vh;
+}
+
+/* ------------------ 卡片样式 ------------------ */
+
+.profile-card, .activity-card, .feature-card {
+  margin-bottom: 24px;
+  border-radius: 8px;
+}
+
+/* ------------------ 个人信息卡片样式 ------------------ */
+
+.profile-header {
+  text-align: center;
+}
+
+.profile-header nz-avatar {
+  margin-bottom: 16px;
+  background-color: #1890ff; /* Ant Design 主题色 */
+}
+
+.info-text h2 {
+  font-size: 20px;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.signature {
+  color: #8c8c8c;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+/* 详细信息部分 */
+.details p {
+  line-height: 28px;
+  font-size: 14px;
+}
+
+.details nz-icon {
+  margin-right: 8px;
+  color: #1890ff;
+}
+
+/* 快捷操作按钮部分 */
+.quick-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px; /* 按钮间距 */
+}
+
+/* ------------------ 活动卡片样式 ------------------ */
+
+.more-activities {
+  width: 100%;
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* ------------------ 快捷功能样式 ------------------ */
+
+.feature-item {
+  text-align: center;
+  padding: 16px 0;
+  border: 1px solid #f0f0f0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.feature-item:hover {
+  border-color: #1890ff;
+  color: #1890ff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item nz-icon {
+  font-size: 36px;
+  margin-bottom: 8px;
+  color: #1890ff;
+}
+
+.feature-item p {
+  margin: 0;
+  font-size: 14px;
+}

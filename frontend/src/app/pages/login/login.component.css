@@ -1,0 +1,34 @@
+/* login.component.css */
+
+.login-container {
+  display: flex; /* 使用 Flexbox 确保内部的 .login-form 可以居中 */
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+  height: 100vh; /* 占据整个视口高度 */
+  width: 100vw; /* 占据整个视口宽度 */
+
+ background-image: url('../../../assets/27c6f6dfb3c383f79932d58d319b6d1d.jpg');
+  background-size: cover; /* 确保背景图覆盖整个容器 */
+  background-position: center center; /* 背景图居中 */
+  background-repeat: no-repeat; /* 不重复 */
+  /* background-attachment: fixed; /* 可选：背景图固定，不随滚动条滚动 */
+}
+
+.login-form {
+  width: 400px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.9); /* 给表单背景增加半透明度，以便看到背景图 */
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* 调整阴影增强对比度 */
+}
+
+.form-title {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #333; /* 确保标题在半透明背景上清晰可见 */
+}
+
+.login-btn-wrapper {
+  display: flex;
+  justify-content: center;
+}

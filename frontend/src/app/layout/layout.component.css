@@ -1,0 +1,33 @@
+/* ... (保留原有样式) ... */
+
+.avatar-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 8px 0;
+  /* 添加以下样式 */
+  cursor: pointer; /* 鼠标变为手型，提示可点击 */
+  user-select: none; /* 防止选中文字 */
+}
+
+/* ensure layout and sider span full height */
+.full-height-layout,
+.full-height-layout nz-sider,
+.full-height-layout nz-layout {
+  height: 100vh;
+}
+
+/* K E Y: 添加悬停效果 */
+.avatar-container:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* 悬停时稍微变亮 */
+}
+
+.centered-avatar {
+  width: 36px;
+  height: 36px;
+}
+
+/* ... (保留原有样式) ... */
+
+.header-title {
+  color: white;
+}
