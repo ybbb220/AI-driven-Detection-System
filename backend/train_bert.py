@@ -9,7 +9,7 @@ import json
 
 
 # --- 1. 准备数据集 ---
-def prepare_dataset(file_path="english_essays.jsonl"):
+def prepare_dataset(file_path="fi_essays.jsonl"):
     """
     加载纯文本数据集。
     假设格式为: {"text": "This is an essay...", "label": 0} (0: 人类, 1: AI)
@@ -17,7 +17,6 @@ def prepare_dataset(file_path="english_essays.jsonl"):
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"未找到数据文件 {file_path}，请准备好纯文本数据集。")
 
-    # 根据你的文件扩展名，这里可以是 'json' 也可以是 'csv'
     dataset = load_dataset('json', data_files=file_path)
     return dataset['train']
 
@@ -32,7 +31,6 @@ def train_model():
     train_dataset = train_val_split['train']
     val_dataset = train_val_split['test']
 
-    # 【核心修改 1】：更换为更适合英文自然语言理解的 RoBERTa
     model_name = "roberta-base"  # 也可以换成 "microsoft/deberta-v3-base"
     print(f"正在加载模型: {model_name}...")
     tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -43,8 +41,6 @@ def train_model():
     label2id = {"Human": 0, "AI": 1}
 
     def preprocess_function(examples):
-        # 【核心修改 2】：彻底抛弃拼接，直接对纯文本进行 Tokenize
-        # 截断到 512，这对于长 Essay 很重要
         tokenized_inputs = tokenizer(
             examples['text'],
             padding="max_length",
