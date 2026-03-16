@@ -13,7 +13,7 @@ from routes.ai_detector import AITextDetector
 load_dotenv()
 
 print("正在加载AI文本检测模型...")
-ai_text_detector = AITextDetector(model_path="./roberta_ai_text_classifiere")
+ai_text_detector = AITextDetector(model_path="./roberta_ai_text_classifier")
 print("模型加载完成。")
 
 

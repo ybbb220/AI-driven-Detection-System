@@ -1,6 +1,6 @@
 import torch
 from torch.utils.data import DataLoader
-from transformers import AutoTokenizer, AutoModelForSequenceClassification, get_scheduler
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, get_scheduler, DataCollatorWithPadding
 from torch.optim import AdamW
 from datasets import load_dataset
 from tqdm.auto import tqdm
@@ -9,7 +9,7 @@ import json
 
 
 # --- 1. 准备数据集 ---
-def prepare_dataset(file_path="fi_essays.jsonl"):
+def prepare_dataset(file_path="final_dataset_filtered.json"):
     """
     加载纯文本数据集。
     假设格式为: {"text": "This is an essay...", "label": 0} (0: 人类, 1: AI)
@@ -41,15 +41,15 @@ def train_model():
     label2id = {"Human": 0, "AI": 1}
 
     def preprocess_function(examples):
+        # 移除 padding="max_length"，交给 data_collator 进行动态填充，以节省显存和加快训练
         tokenized_inputs = tokenizer(
             examples['text'],
-            padding="max_length",
             truncation=True,
             max_length=512
         )
 
-        # 确保 labels 字段存在且为整数
-        tokenized_inputs["labels"] = examples["label"]
+        # 【修复点 1】强制将标签转换为整数，防止因 JSON 中为字符串而导致类型错误
+        tokenized_inputs["labels"] = [int(label) for label in examples["label"]]
         return tokenized_inputs
 
     print("正在进行文本 Tokenization 处理...")
@@ -65,9 +65,21 @@ def train_model():
     tokenized_val_dataset = tokenized_val_dataset.remove_columns(columns_to_remove)
     tokenized_val_dataset.set_format("torch")
 
-    # 保持良好的防显存溢出设置
-    train_dataloader = DataLoader(tokenized_train_dataset, shuffle=True, batch_size=4)
-    val_dataloader = DataLoader(tokenized_val_dataset, batch_size=4)
+    # 【修复点 2】引入 DataCollatorWithPadding
+    data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
+
+    # 将 collate_fn 传入 DataLoader，确保数据被正确堆叠为 Tensor 并进行动态填充
+    train_dataloader = DataLoader(
+        tokenized_train_dataset,
+        shuffle=True,
+        batch_size=4,
+        collate_fn=data_collator
+    )
+    val_dataloader = DataLoader(
+        tokenized_val_dataset,
+        batch_size=4,
+        collate_fn=data_collator
+    )
 
     accumulation_steps = 4
     # 保持稳健的学习率
@@ -92,6 +104,7 @@ def train_model():
         epoch_loss = 0.0
 
         for step, batch in enumerate(train_dataloader):
+            # 将 batch 中的所有 Tensor 移动到正确的设备 (GPU/CPU)
             batch = {k: v.to(device) for k, v in batch.items()}
             outputs = model(**batch)
 
